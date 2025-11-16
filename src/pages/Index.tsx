@@ -51,14 +51,7 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row gap-6 mt-8">
               <Button
                 size="lg"
-                onClick={() => {
-                  // Auto-login as a demo user for quick access (no backend)
-                  localStorage.setItem(
-                    'user',
-                    JSON.stringify({ email: 'demo@user', name: 'Demo User', role: 'user' })
-                  );
-                  navigate('/user-dashboard');
-                }}
+                onClick={() => navigate('/login')}
                 className="text-xl px-12 py-6 bg-transparent border border-white/30 text-white hover:bg-white/10 font-bold shadow-none transform hover:scale-105 transition-all"
               >
                 Access System

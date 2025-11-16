@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { User, Lock, Mail, Shield } from "lucide-react";
+import { User, Lock, Mail } from "lucide-react";
 import terraLogo from "../assets/terra-civitas.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+// simplified: single user login form (authority removed)
 import { toast } from "sonner";
 import api from "@/lib/api";
 
@@ -13,7 +13,6 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userType, setUserType] = useState<"user" | "authority">("user");
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,21 +22,15 @@ const Login = () => {
       return;
     }
 
-    // For demo purposes - bypass API and go directly to dashboard
+    // For demo purposes - bypass API and go directly to dashboard (recent alerts)
     localStorage.setItem('user', JSON.stringify({
       email,
-      role: userType,
+      role: 'user',
       name: email.split('@')[0]
     }));
-    
-    toast.success(`Logged in as ${userType}`);
-    
-    // Navigate to the appropriate dashboard
-    if (userType === 'authority') {
-      navigate("/authority-dashboard");
-    } else {
-      navigate("/user-dashboard");
-    }
+
+    toast.success("Logged in as user");
+    navigate("/dashboard/recent");
   };
 
   return (
@@ -63,87 +56,38 @@ const Login = () => {
             {/* Login Card */}
             <Card className="w-full max-w-md p-6 space-y-6 bg-white/10 backdrop-blur-sm">
               <h2 className="text-2xl font-bold text-center text-white">Login to Your Account</h2>
-              
-              <Tabs value={userType} onValueChange={(v) => setUserType(v as "user" | "authority")} className="w-full">
-          <TabsList className="grid w-full grid-cols-2 mb-6">
-            <TabsTrigger value="user" className="flex items-center gap-2">
-              <User className="w-4 h-4" />
-              User
-            </TabsTrigger>
-            <TabsTrigger value="authority" className="flex items-center gap-2">
-              <Shield className="w-4 h-4" />
-              Authority
-            </TabsTrigger>
-          </TabsList>
 
-                    <TabsContent value="user">
-            <form onSubmit={handleLogin} className="space-y-4">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-white flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
-                  Email
-                </label>
-                <Input
-                  type="email"
-                  placeholder="user@example.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="bg-white/20 text-white placeholder:text-white/70"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-white flex items-center gap-2">
-                  <Lock className="w-4 h-4" />
-                  Password
-                </label>
-                <Input
-                  type="password"
-                  placeholder="••••••••"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="bg-white/20 text-white placeholder:text-white/70"
-                />
-              </div>
-              <Button type="submit" className="w-full bg-white text-black hover:bg-gray-100" size="lg">
-                Sign In as User
-              </Button>
-            </form>
-          </TabsContent>
-
-          <TabsContent value="authority">
-            <form onSubmit={handleLogin} className="space-y-4">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-white flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
-                  Email
-                </label>
-                <Input
-                  type="email"
-                  placeholder="authority@example.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="bg-white/20 text-white placeholder:text-white/70"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-white flex items-center gap-2">
-                  <Lock className="w-4 h-4" />
-                  Password
-                </label>
-                <Input
-                  type="password"
-                  placeholder="••••••••"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="bg-white/20 text-white placeholder:text-white/70"
-                />
-              </div>
-              <Button type="submit" className="w-full bg-white text-black hover:bg-gray-100" size="lg">
-                Sign In as Authority
-              </Button>
-            </form>
-          </TabsContent>
-        </Tabs>
+              <form onSubmit={handleLogin} className="space-y-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white flex items-center gap-2">
+                    <Mail className="w-4 h-4" />
+                    Email
+                  </label>
+                  <Input
+                    type="email"
+                    placeholder="user@example.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="bg-white/20 text-white placeholder:text-white/70"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white flex items-center gap-2">
+                    <Lock className="w-4 h-4" />
+                    Password
+                  </label>
+                  <Input
+                    type="password"
+                    placeholder="••••••••"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="bg-white/20 text-white placeholder:text-white/70"
+                  />
+                </div>
+                <Button type="submit" className="w-full bg-white text-black hover:bg-gray-100" size="lg">
+                  Sign In
+                </Button>
+              </form>
 
         <div className="mt-6 text-center">
           <p className="text-sm text-white/70">
