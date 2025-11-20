@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "neha@gmail.com",
+      "password": "$2a$10$WXBSp73Gj8.7.ACh.Aeg5OIqAjql/Rrn0vaiiwfQhZ6B1OHT39Tty",
+      "created_at": "2025-11-16T10:31:34.161Z"
+    },
+    {
+      "id": 2,
+      "email": "niya@gmail.com",
+      "password": "$2a$10$YCYREC8S9Ivp0j65hg8BkOZ0fmok8eDNtJ4u0k7vVQf/UoB7EkZgu",
+      "created_at": "2025-11-16T10:49:14.479Z"
+    }
+  ]
+}
