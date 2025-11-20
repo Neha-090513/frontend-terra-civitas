@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Activity, AlertTriangle, LogOut } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -22,6 +23,7 @@ interface AuthorityDashboardProps {
 
 const AuthorityDashboard = ({ username }: AuthorityDashboardProps) => {
   const [isLogoutDialogOpen, setIsLogoutDialogOpen] = useState(false);
+  const navigate = useNavigate();
   const [savedAlerts] = useState([
     {
       id: "1",
@@ -94,15 +96,17 @@ const AuthorityDashboard = ({ username }: AuthorityDashboardProps) => {
                 <AlertDialogHeader>
                   <AlertDialogTitle>Are you sure you want to logout?</AlertDialogTitle>
                   <AlertDialogDescription>
-                    You will be redirected to the login page.
+                    You will be redirected to the home page.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                   <AlertDialogCancel>Cancel</AlertDialogCancel>
                   <AlertDialogAction
                     onClick={() => {
+                      // close dialog then clear storage and navigate
+                      setIsLogoutDialogOpen(false);
                       localStorage.removeItem('user');
-                      window.location.href = '/';
+                      navigate('/');
                     }}
                   >
                     Logout

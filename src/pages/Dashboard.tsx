@@ -12,8 +12,9 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    // clear user and navigate to home
     localStorage.removeItem('user');
-    navigate('/login');
+    navigate('/');
   };
 
   useEffect(() => {

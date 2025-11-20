@@ -21,16 +21,25 @@ const Login = () => {
       toast.error("Please fill in all fields");
       return;
     }
-
-    // For demo purposes - bypass API and go directly to dashboard (recent alerts)
-    localStorage.setItem('user', JSON.stringify({
-      email,
-      role: 'user',
-      name: email.split('@')[0]
-    }));
-
-    toast.success("Logged in as user");
-    navigate("/dashboard/recent");
+    // Call backend login endpoint and validate credentials
+    (async () => {
+      try {
+        const res = await api.login(email, password);
+        // expected res: { token, user: { id, email } }
+        const user = res.user || { email };
+        localStorage.setItem('user', JSON.stringify({
+          email: user.email,
+          name: (user.email || email).split('@')[0],
+          token: res.token,
+          role: 'user'
+        }));
+        toast.success('Logged in successfully');
+        navigate('/dashboard/recent');
+      } catch (err: any) {
+        const msg = err?.message || 'Login failed';
+        toast.error(msg.includes('Invalid') ? 'Invalid email or password' : msg);
+      }
+    })();
   };
 
   return (

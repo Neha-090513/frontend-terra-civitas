@@ -2,16 +2,31 @@ import supabase from "./supabase";
 
 const BASE = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
 
-export async function login(username: string, password: string) {
+export async function login(email: string, password: string) {
   const res = await fetch(`${BASE}/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, password }),
+    body: JSON.stringify({ email, password }),
   });
 
   if (!res.ok) {
     const err = await res.json().catch(() => ({ detail: 'Login failed' }));
     throw new Error(err.detail || 'Login failed');
+  }
+
+  return res.json();
+}
+
+export async function register(email: string, password: string) {
+  const res = await fetch(`${BASE}/auth/register`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: 'Registration failed' }));
+    throw new Error(err.detail || 'Registration failed');
   }
 
   return res.json();
@@ -198,4 +213,4 @@ export async function getAlerts() {
   }
 }
 
-export default { login, getAlerts };
+export default { login, register, getAlerts };

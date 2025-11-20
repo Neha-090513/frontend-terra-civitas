@@ -6,6 +6,8 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import terraLogo from "../assets/terra-civitas.png";
+import api from "@/lib/api";
+import { toast } from "sonner";
 
 
 const Register = () => {
@@ -17,10 +19,21 @@ const Register = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Add registration logic here
-    console.log("Registration data:", formData);
-    // For now, redirect to login after registration
-    navigate("/login");
+    if (!formData.email || !formData.password) {
+      toast.error('Please fill in all fields');
+      return;
+    }
+
+    (async () => {
+      try {
+        const res = await api.register(formData.email, formData.password);
+        toast.success('Registered successfully. Please login.');
+        navigate('/login');
+      } catch (err: any) {
+        const msg = err?.message || 'Registration failed';
+        toast.error(msg.includes('already') ? 'Email already registered' : msg);
+      }
+    })();
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
