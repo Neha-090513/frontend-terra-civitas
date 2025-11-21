@@ -1,73 +1,84 @@
-# Welcome to your Lovable project
+# ⚡ Terra Civitas – Web Dashboard (Lovable Frontend)
 
-## Project info
+> Modern React + TypeScript dashboard built with Vite, Tailwind CSS, and shadcn-ui
 
-**URL**: https://lovable.dev/projects/1979a80e-9271-4ce4-81e4-e33e7cf0dbda
+[![Vite](https://img.shields.io/badge/build-Vite-646CFF.svg)](https://vitejs.dev/)
+[![React](https://img.shields.io/badge/frontend-React-61DAFB.svg)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/lang-TypeScript-3178C6.svg)](https://www.typescriptlang.org/)
+[![TailwindCSS](https://img.shields.io/badge/styles-TailwindCSS-38B2AC.svg)](https://tailwindcss.com/)
+[![shadcn-ui](https://img.shields.io/badge/ui-shadcn--ui-000000.svg)](https://ui.shadcn.com/)
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 📋 Overview
 
-**Use Lovable**
+This repository contains the **frontend application** for the Terra Civitas system..
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/1979a80e-9271-4ce4-81e4-e33e7cf0dbda) and start prompting.
+The app is a **single-page application (SPA)** built with:
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Vite** for fast dev/build  
+- **React + TypeScript** for a robust component model  
+- **Tailwind CSS** for styling  
+- **shadcn-ui** for accessible, composable UI components  
 
-**Use your preferred IDE**
+Use it as a dashboard / control panel UI to integrate with your backend (e.g., Terra Civitas crime detection API) or any other REST/GraphQL service.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🎯 Key Features
 
-Follow these steps:
+- ✅ **Vite-powered dev experience** – extremely fast HMR & builds  
+- ✅ **Type-safe React codebase** using TypeScript  
+- ✅ **Tailwind CSS** utility-based styling  
+- ✅ **shadcn-ui components** for buttons, cards, dialogs, forms, etc.  
+- ✅ **Ready for API integration** via fetch/axios/React Query  
+- ✅ **Easy deployment** to Vercel, Netlify, GitHub Pages, or any static host  
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 🏗️ Project Structure
 
-# Step 3: Install the necessary dependencies.
-npm i
+> This is a typical layout for  Vite + React + TypeScript + Tailwind + shadcn-ui project.  
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```txt
+<project-root>/
+├── src/
+│   ├── components/          # Reusable UI components
+│   │   ├── ui/              # shadcn-ui primitives
+│   │   └── layout/          # Layout components (header, sidebar, etc.)
+│   ├── pages/               # Top-level pages / views
+│   ├── hooks/               # Custom React hooks
+│   ├── lib/                 # Utilities, API clients, helpers
+│   ├── styles/              # Global styles (if any)
+│   ├── main.tsx             # React entry point
+│   └── App.tsx              # Root app component / routing
+├── public/                  # Static assets
+├── index.html               # Vite HTML entry
+├── vite.config.ts           # Vite configuration
+├── tsconfig.json            # TypeScript configuration
+├── tailwind.config.cjs      # Tailwind config
+├── postcss.config.cjs       # PostCSS config
+├── package.json
+└── README.md                # This file
+---
 ```
+## 🚀 Quick Start
 
-**Edit a file directly in GitHub**
+### Prerequisites
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- Node.js 18+ 
+- npm 
 
-**Use GitHub Codespaces**
+### Installation & Development
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+# 1. Clone the repository
+git clone https://github.com/Neha-090513
+cd frontend-terra-civitas
 
-## What technologies are used for this project?
+# 2. Install dependencies
+npm install
 
-This project is built with:
+# 3. Start the dev server
+npm run dev
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/1979a80e-9271-4ce4-81e4-e33e7cf0dbda) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
