@@ -1,4 +1,4 @@
-# ⚡ Terra Civitas – Web Dashboard (Lovable Frontend)
+# ⚡ Terra Civitas – Web Dashboard 
 
 > Modern React + TypeScript dashboard built with Vite, Tailwind CSS, and shadcn-ui
 
