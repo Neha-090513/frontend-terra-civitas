@@ -21,7 +21,7 @@ The app is a **single-page application (SPA)** built with:
 - **Tailwind CSS** for styling  
 - **shadcn-ui** for accessible, composable UI components  
 
-Use it as a dashboard / control panel UI to integrate with your backend (e.g., Terra Civitas crime detection API) or any other REST/GraphQL service.
+Use it as a dashboard / control panel UI to integrate your backend.
 
 ---
 
