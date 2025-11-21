@@ -73,7 +73,7 @@ Use it as a dashboard / control panel UI to integrate with your backend (e.g., T
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/Neha-090513
+git clone https://github.com/Neha-090513/frontend-terra-civitas.git
 cd frontend-terra-civitas
 
 # 2. Install dependencies
@@ -81,4 +81,5 @@ npm install
 
 # 3. Start the dev server
 npm run dev
+
 
